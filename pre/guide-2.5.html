@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="清华LOGO.png" type="image/x-icon">
+
+  <script>;(function(){var w=parseInt(window.screen.width),s=w/640,u=navigator.userAgent.toLowerCase(),m='<meta name="viewport" content="width=640,';if(/android (\d+\.\d+)/.test(u)){if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';}else{m+='user-scalable=no,';}m+='target-densitydpi=device-dpi">';document.write(m);}());</script>
+  <link rel="stylesheet" href="guide.css">
+  <link rel="stylesheet" href="line_loading.css">
+
+  <title>游戏指导语</title>
+</head>
+<body>
+
+<div id="main" class="container">
+
+  <div id="header">
+    <img src="tsinghua_banner_2.png" width="100%">
+    <h3>注意，接下来将开始正式游戏阶段</h3>
+    <h2 id="goal"></h2>
+<!--    <p id="goal_hint" style="color:grey; font-weight: bold"> 注：本环节中难度与测试环节相同，实验结束后将根据三个环节的目标实现情况给予1-20元额外奖励</p>-->
+
+    <div id="rule_and_button">
+      <div id="formal_rule">
+      <p>说明：</p>
+      <p>1.本环节时间为10分钟，到时间后游戏会自动结束，请不必关心时间问题。</p>
+      <p>2.请您知晓，大多数用户认为该游戏是 <b>相当好玩的</b>，令人感到<b>愉悦和沉浸。</b></p>
+      <p>3.请您专注游戏本身，尽可能<b>体验游戏中的乐趣。</b></p>
+      <p>4.不管您的游戏得分为多少，您在完成游戏之后都将获得<b>30元的固定报酬。</b></p>
+      </div>
+
+     <button onclick="clickButton()" id="skip_btn" >开始游戏 </button>
+    </div>
+
+
+  </div>
+
+</div>
+
+<button onclick="clickButton()" id="skip_btn" style="background-color: darkred; display: none; margin-top: 150px"> 开发者选项：跳过排队直接开始 </button>
+
+<script>
+
+  // zyf代码
+  // 记录该页面开始的时间
+  let timestamp = (new Date()).valueOf();
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+  // 根据c参数和f参数来分配下一个Block的条件
+  var condition = getUrlParameter('c')
+  let max_score = getUrlParameter('ms')
+  let practice_speed = getUrlParameter('v')
+  let total_score = getUrlParameter('ts')
+  let real_score = getUrlParameter('rs')
+  let ext = getUrlParameter('ext')
+
+
+  // 获取练习页面传递过来的参数：速度和分数,条件
+  var link = '../practice/dist/index.html' + '?c=' + condition + '&ext=' + ext
+             + '&tchain=' + getUrlParameter('tchain') + '_' + timestamp
+
+  if (getUrlParameter('dev') === '1') {
+    link = link + '&dev=1'
+    document.getElementById('skip_btn').style.display = 'inline'
+  }
+
+  // 开发者选项：跳过排队
+  function clickButton() {
+    window.location.href=link
+  }
+
+
+  //实现按钮倒计时功能
+  let tim=4;
+  function aaa(){
+    let btn=document.getElementById("btn");
+    if(tim<=0)
+    {
+      btn.textContent="开始游戏" ;
+      btn.disabled="";
+    }
+    else
+    {
+      btn.textContent="开始游戏"+ "("  +tim+"s)";
+      tim--;
+    }
+  }
+  setInterval("aaa()",1000);
+
+
+
+
+
+</script>
+
+<!--排队功能代码！！-->
+<script src=https://cdn.staticfile.org/jquery/2.1.4/jquery.min.js></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.staticfile.org/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+
+
+
+</body>
+</html>
+

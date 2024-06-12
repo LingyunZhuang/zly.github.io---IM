@@ -1,0 +1,167 @@
+body {
+  background: #009688;
+  padding: 0;
+  margin: 0;
+  /* 下面这个设置的是字体大小（font-size)，和字体(font-family)，但没有包含字重（font-weight)*/
+  font: 16px/1 "Microsoft Yahei", "HanHei SC", "PingHei", "PingFang SC", "STHeitiSC-Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;  /*字体抗锯齿渲染*/
+  -moz-osx-font-smoothing: grayscale;   /*字体抗锯齿渲染*/
+  -moz-font-feature-settings: 'liga', 'kern';  /*这个是高级的修改字体形状的*/
+  direction: ltr;   /*文字的默认书写方向，从左到右*/
+  text-align: left;  /*文字默认左对齐*/
+}
+
+.container {
+  width: 60%;    /*这个就是主面板的宽度 */
+  height: 300%;
+  margin: 0 20%;
+  padding-top: 0px;  /*距离顶部的间距*/
+  box-shadow: 0 0 10px #fff inset; /*阴影，不用改*/
+  position: absolute;   /*绝对定位，这个有可能需要调整*/
+  background: white  ;  /*背景颜色*/
+  line-height: 1.8em;  /* 这个是行间距 */
+
+  /*border-radius: 20px;   !*圆角边框*!*/
+  /*border: 5px black solid !*这个是加边框，控制上下左右边框就是e.g. border-right*!*/
+}
+
+#header
+{
+  background-color:white;
+  /*height: 60px;*/
+  text-align: center;
+}
+
+.leftbox {
+  padding-top: 20px;
+  width: 30%;
+  /*height: 300%;*/
+  background-color: white;
+  float: left;
+  text-align: center;
+}
+.rightbox {
+  width: 70%;
+  /*height: 300%;*/
+  background-color: white;
+  /*padding-right: 10px;*/
+  float: right;
+}
+
+#basic_intro {
+  padding-right: 20px;
+  padding-left: 10px;
+  line-height: 1.5em;
+}
+
+#notice {
+  margin: 20px 0px;
+  padding-top: 10px;
+  /*border: 5px solid black;*/
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  float: bottom;
+  background: Azure  ;
+  /*text-align: center;*/
+}
+
+button {
+  margin-top: 20px;
+  background-color: #008CBA;
+  color:#fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;   /*悬停时显示一个手*/
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: none;
+  font-size: 16px;
+}
+
+/*使上部分的介绍语以表格形式展示*/
+.boxes {
+  display: table;
+}
+
+/** 必须提升样式优先权(!important) **/
+button[disabled] {
+  color: white !important;
+  background: gray !important;
+}
+
+
+#practice_scores {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: Azure  ;
+  font-size: 18px;
+  /*text-align: center;*/
+}
+
+.hint_word {
+  color:	#808080;
+  line-height: 0;
+}
+
+#goal {
+  color: #F75000;
+}
+
+#formal_rule {
+  /*background: lightgray;*/
+  text-align: left;
+  margin-top: 50px;
+  padding: 5px 20px;
+  line-height: 1em;
+  color: #808080;
+  font-size: 14px;
+}
+
+#rule_and_button {
+  /*background-color: grey;*/
+  width: 100%;
+  position:absolute;
+}
+
+#waiting_page {
+  background-color:#2c3e50;
+  /*background-color:#009688;*/
+  width: 100%;
+  height: 100%;
+  padding-top: 120px;
+  margin-top: 50px;
+  color: white;
+  position:absolute;
+  display: none;
+  z-index:1;  /* 为了覆盖上面的rule_and_button */
+}
+
+
+/*#navigation*/
+/*{*/
+/*  position: absolute;*/
+/*  top: 60px;*/
+/*  left: 0;*/
+/*  width: 35%;*/
+/*  background-color:white;*/
+/*  height:300%;*/
+/*  text-align: center;*/
+/*}*/
+
+/*#content*/
+/*{*/
+/*  background-color:white;*/
+/*  !*padding: 1px 20px 1em 40px;*!*/
+/*  margin-left: 36%;*/
+/*  top: 60px;*/
+/*  left: 60%;*/
+/*  width: 63%;*/
+/*  !*border-left: 36% solid #069;!*左边框位置从134px位置开始*!*!*/
+/*  height:300%;*/
+/*}*/
+
+/*.h2 {*/
+/*  margin: 0;*/
+/*}*/

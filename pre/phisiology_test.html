@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="清华LOGO.png" type="image/x-icon">
+
+  <script>;(function(){var w=parseInt(window.screen.width),s=w/640,u=navigator.userAgent.toLowerCase(),m='<meta name="viewport" content="width=640,';if(/android (\d+\.\d+)/.test(u)){if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';}else{m+='user-scalable=no,';}m+='target-densitydpi=device-dpi">';document.write(m);}());</script>
+  <link rel="stylesheet" href="guide.css">
+
+  <title>静心环节</title>
+</head>
+<body>
+
+<div id="main" class="container">
+
+  <div id="header">
+    <img src="tsinghua_banner_2.png" width="100%">
+    <h2>静心环节</h2>
+
+
+    <article>
+
+      <p>请闭目静心休养3分钟</p>
+
+      <br>
+      <p class="hint_word">在此期间请勿玩手机或进行其他动作</p>
+      <button onclick="clickButton()" id="btn" disabled="disabled">开始实验 (180s)</button>
+    </article>
+  </div>
+
+</div>
+
+<script>
+
+  // 记录该页面开始的时间
+  let timestamp = (new Date()).valueOf();
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+  // 获取练习页面传递过来的参数：速度和分数
+  link = 'questionare-pretest.html?c=' + getUrlParameter('c') + '&ext=' + getUrlParameter('ext') + '&tchain=' + timestamp
+
+  if (getUrlParameter('dev') === '1') {
+    link = link + '&dev=1'
+  }
+  function clickButton() {
+    window.location.href=link
+  }
+
+
+  //实现按钮倒计时功能
+  let tim=179;
+  if (getUrlParameter('dev') === '1') {
+    tim = 3
+  }
+
+  function aaa(){
+    let btn=document.getElementById("btn");
+    if(tim<=0)
+    {
+      btn.textContent="开始实验";
+      btn.disabled="";
+    }
+    else
+    {
+      btn.textContent="开始实验 ("  +tim+"s)";
+      tim--;
+    }
+  }
+  setInterval("aaa()",1000);
+
+
+
+</script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <h2>test</h2>
+<!--  <button id="btn" onclick="javascript:window.location.href='baidu.com'">已阅读并同意</button>-->
+  <button id="btn" onclick="fun()">已阅读并同意</button>
+
+
+  <script>
+    // var btn = document.getElementById("btn")
+    // btn.onclick = "javascript:window.location.href='jd.com'"
+
+    // function fun() {
+    //   window.location.href='jd.com'
+    // }
+
+
+    function jumpurl() {
+      location="pre/test.html"
+    }
+    function url() {
+      setTimeout('jumpurl()', 5000)
+    }
+
+
+    // setTimeout(window.location.href = "http://3aj.cn/javascript/19.html", 3);
+    setTimeout(function() {window.location.href = "http://3aj.cn/javascript/19.html"}, 3000);
+
+
+    // if (5>3) {
+    //   console.log('test ok')
+    //   // changePage('pre/test.html', 0.1)
+    //   url();
+    // }
+
+
+  </script>
+
+
+</body>
+</html>

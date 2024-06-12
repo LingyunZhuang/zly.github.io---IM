@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="清华LOGO.png" type="image/x-icon">
+
+  <script>;(function(){var w=parseInt(window.screen.width),s=w/640,u=navigator.userAgent.toLowerCase(),m='<meta name="viewport" content="width=640,';if(/android (\d+\.\d+)/.test(u)){if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';}else{m+='user-scalable=no,';}m+='target-densitydpi=device-dpi">';document.write(m);}());</script>
+  <link rel="stylesheet" href="guide.css">
+  <title>结果公布</title>
+
+
+
+  </style>
+</head>
+<body>
+
+<div id="main" class="container">
+
+  <div id="header">
+    <img src="tsinghua_banner_2.png" width="100%">
+    <br>
+
+
+
+
+    <br/>
+    <h3>正式游戏阶段结束，接下来你需要完成一些问卷</h3>
+<!--    <h3><span id="second">50</span>秒后自动跳转..</h3>-->
+    <article>
+      <p><span id="second">10</span>秒后自动跳转..</p>
+      <button onclick="clickButton()">直接开始</button>
+    </article>
+  </div>
+
+</div>
+
+<script>
+
+  // 记录该页面开始的时间
+  let timestamp = (new Date()).valueOf();
+
+  var num=document.getElementById("second").innerHTML;
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+
+
+  // 在ext的末尾加上这关的难度以及是第几关
+  link = "https://www.credamo.com/s/7JfQ3uano/" + '?c=' + getUrlParameter('c') + getUrlParameter('f') 
+          + getUrlParameter('cp') + getUrlParameter('ext')
+          + getUrlParameter('tchain') + '_' + timestamp
+
+  if (getUrlParameter('dev') === '1') {
+    link = link + '&dev=1'
+  }
+
+  function count(){
+    num--;
+    document.getElementById("second").innerHTML=num;
+    //通过window的location和history对象来控制网页的跳转
+    if(num==0){
+      window.location.assign(link);
+    }
+  }
+  window.setInterval("count()",1000);
+
+  function back(){
+    window.history.back();
+  }
+
+  function clickButton() {
+    window.location.href=link
+  }
+
+
+
+</script>
+
+</body>
+</html>
+

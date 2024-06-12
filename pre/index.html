@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="清华LOGO.png" type="image/x-icon">
+
+  <script>;(function(){var w=parseInt(window.screen.width),s=w/640,u=navigator.userAgent.toLowerCase(),m='<meta name="viewport" content="width=640,';if(/android (\d+\.\d+)/.test(u)){if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';}else{m+='user-scalable=no,';}m+='target-densitydpi=device-dpi">';document.write(m);}());</script>
+  <link rel="stylesheet" href="pre.css">
+
+  <title>实验告知</title>
+
+</head>
+
+<body>
+<div id="main" class="container">
+  <img src="tsinghua_banner_2.png" width="100%">
+  <h2 class="title">实验知情同意书</h2>
+
+  <div class="content">
+    <article>
+      <p>你好，欢迎参加本实验！</p>
+      <p>本实验由清华大学心理学系社会文化神经科学实验室主办，实验目的是为了研究某项产品的用户体验。本知情同意书提供实验相关信息如下：</p>
+      <p class="subtitle">1.实验说明</p>
+      <p> 本实验由4个阶段组成：前测阶段（5-7分钟）、练习阶段（3分钟）、正式阶段（10分钟）、问卷阶段（6-8分钟）。</p>
+     
+
+      <p>实验前请将手机静音且关闭震动，实验全程请勿看手机</p>
+
+
+      <p class="subtitle">2.参与本实验的受益及可能的风险</p>
+      <p>在完成本实验全部内容后，你将会获得一定的报酬（<b>具体报酬详见下一页指导语</b>）。<br/>本实验不会对你造成任何身体或心理上的伤害。</p>
+
+      <p class="subtitle">3.隐私问题</p>
+      <p>本实验的所有数据仅作学术用途，你的个人信息以及所填问卷内容将严格保密，填写的内容没有对错之分，为保障实验的准确性，请务必填写真实信息。</p>
+
+    <p class="subtitle">4.自由退出</p>
+    <p>参与本实验是完全自愿的，你可以在实验过程中的任何时候选择退出本实验。</p>
+    </article>
+  </div>
+
+
+  <div id="subject_info">
+    <p><b>请输入你的个人信息:</b></p>
+    <b>姓名: </b> <input type="text" id="subjectname" placeholder=" 中文/拼音皆可"></b></p>
+	<b>
+    <br>
+  </div>
+
+  <center>
+    <button id="btn" onclick="clickButton()" >已阅读并同意</button>
+  </center>
+
+  <br>
+  <br>
+</div>
+
+<script>
+
+  // 只有ID有输入值后才可以点击按钮
+
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+  //检测ID输入是否正确，并传递条件的参数
+  function clickButton() {
+    var link = 'questionare-pretest.html?' + 'c=' + 'c' + '&ext=' + 'c';
+    if (getUrlParameter('dev') === '1') {
+      link = link + '&dev=1'
+    }
+
+ 
+      window.location.href=link
+
+
+  }
+
+</script>
+
+
+</body>
+
+</html>

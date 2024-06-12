@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>问卷</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      iframe {
+        width: 90%;
+        height: 100%;
+        border: 0px;
+        /*min-height: 2200px;*/
+        /*border: 0px;*/
+        /*overflow: hidden;*/
+      }
+      body {
+        text-align: center;
+        background-color: rgb(238, 238, 238);
+      }
+      #btn {
+        position: fixed;
+        top: 3%;
+        left: 3%;
+        padding: 10px;
+        background-color: #008CBA;
+        color:#fff;
+        border-radius: 4px;
+        cursor: pointer;   /*悬停时显示一个手*/
+        text-align: center;
+        font-weight: bold;
+        letter-spacing: 2px;
+        border: none;
+        font-size: 12px;
+      }
+
+    </style>
+
+</head>
+<body>
+
+<!--<button id="btn" onclick="clickButton()">问卷提交后点击此按钮</button>-->
+<!--<h2>我是问卷我是问卷</h2>-->
+
+<iframe src="https://www.credamo.com/s/2QJBJvano/ 用户cdm761l6IwT1 邀请您作答问卷《游戏中的体验测量2》，点击链接开始作答"
+        width="90%"
+        height="100%"
+        id = 'questionare'
+        name = 'myframe'
+></iframe>
+
+<!--修改前的格式-->
+<!--<iframe src="https://www.diaochapai.com/survey/3c50844a-22ee-4276-8cd5-a96dd1bb775e?iframe"-->
+<!--        width="90%"-->
+<!--        frameborder = "0"-->
+<!--        allowtransparency="true"-->
+<!--        scrolling = "no"-->
+<!--        id = 'questionare'-->
+<!--        name = 'myframe'-->
+<!--&gt;</iframe>-->
+
+<!--onload="this.height=myframe.document.body.scrollHeight"-->
+
+<script>
+
+  // 记录该页面开始的时间
+  let timestamp = (new Date()).valueOf();
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+  let a = "https://www.credamo.com/s/2QJBJvano/ 用户cdm761l6IwT1 邀请您作答问卷《游戏中的体验测量2》，点击链接开始作答"
+  let ext = getUrlParameter("ext")
+  a = a + "&ext=" + ext + '_timechain_' + getUrlParameter("tchain")
+  console.log(a)
+  document.getElementById('questionare').setAttribute("src",a);
+  console.log(ext)
+
+  // 定义该页面结束后的下一个页面（回到目标页或者进入人格问卷页）
+  link1 = "./guide-2.1.html"
+  link2 = "./guide-4.html?ext=" + getUrlParameter('ext') + '&tchain=' + getUrlParameter('tchain') + '_' + timestamp
+
+  link1 = link1 + '?c=' + getUrlParameter('c') + '&f=' + (parseInt(getUrlParameter('f'))+1)
+    + '&cp=' + getUrlParameter('cp') + '&ext=' + getUrlParameter('ext')
+    + '&tchain=' + getUrlParameter('tchain') + '_' + timestamp
+
+  if (getUrlParameter('dev') === '1') {
+    link1 = link1 + '&dev=1'
+  }
+
+  // 点击按钮时确认该往哪跳
+  function clickButton() {
+    if (getUrlParameter('f') < 2) {
+      window.location.href=link1
+    }
+    else {
+      window.location.href=link2
+    }
+
+  }
+
+</script>
+
+
+</body>
+</html>

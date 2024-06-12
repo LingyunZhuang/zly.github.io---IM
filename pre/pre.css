@@ -1,0 +1,87 @@
+body {
+  background: #009688;
+  padding: 0;
+  margin: 0;
+  /* 下面这个设置的是字体大小（font-size)，和字体(font-family)，但没有包含字重（font-weight)*/
+  font: 16px/1 "Microsoft Yahei", "HanHei SC", "PingHei", "PingFang SC", "STHeitiSC-Light", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  -webkit-font-smoothing: antialiased;  /*字体抗锯齿渲染*/
+  -moz-osx-font-smoothing: grayscale;   /*字体抗锯齿渲染*/
+  -moz-font-feature-settings: 'liga', 'kern';  /*这个是高级的修改字体形状的*/
+  direction: ltr;   /*文字的默认书写方向，从左到右*/
+  text-align: left;  /*文字默认左对齐*/
+}
+
+.container {
+  width: 60%;    /*这个就是主面板的宽度 */
+  height: 300%;
+  margin: 0 20%;
+  padding-top: 0px;  /*距离顶部的间距*/
+  box-shadow: 0 0 10px #fff inset; /*阴影，不用改*/
+  position: absolute;   /*绝对定位，这个有可能需要调整*/
+  background: white  ;  /*背景颜色*/
+  line-height: 1.8em;  /* 这个是行间距 */
+
+  /*border-radius: 20px;   !*圆角边框*!*/
+  /*border: 5px black solid !*这个是加边框，控制上下左右边框就是e.g. border-right*!*/
+}
+
+button {
+  background-color: #008CBA;
+  color:#fff;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;   /*悬停时显示一个手*/
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: none;
+  font-size: 16px;
+}
+
+/** 必须提升样式优先权(!important) **/
+button[disabled] {
+  color: white !important;
+  background: gray !important;
+}
+
+.title {
+  margin-top: 30px;
+  text-align: center;
+}
+
+article {
+  margin-top: 10px;
+  padding: 20px;
+}
+
+.subtitle {
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+ul {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#subject_info {
+  margin-top: 5px;
+  padding: 20px;
+  line-height: 40px;
+}
+
+input{
+  outline-style: none ;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 5px 0px;
+  width: 300px;
+  font-family: "Microsoft soft";
+  border-color: #66afe9;
+  /*box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);*/
+}

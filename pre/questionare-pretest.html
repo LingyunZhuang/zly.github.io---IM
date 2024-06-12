@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>问卷</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      iframe {
+        width: 90%;
+        height: 100%;
+        border: 0px;
+        /*min-height: 2200px;*/
+        /*border: 0px;*/
+        /*overflow: hidden;*/
+      }
+      body {
+        text-align: center;
+        background-color: rgb(238, 238, 238);
+      }
+      #btn {
+        position: fixed;
+        top: 3%;
+        left: 3%;
+        padding: 10px;
+        background-color: #008CBA;
+        color:#fff;
+        border-radius: 4px;
+        cursor: pointer;   /*悬停时显示一个手*/
+        text-align: center;
+        font-weight: bold;
+        letter-spacing: 2px;
+        border: none;
+        font-size: 12px;
+      }
+
+    </style>
+
+</head>
+<body>
+
+<button id="btn" onclick="clickButton()">请先阅读右侧指导语说明，确认理解后点击此处开始</button>
+<!--<h2>我是问卷我是问卷</h2>-->
+
+<iframe src="https://www.credamo.com/s/73ieMnano/"
+        width="90%"
+        height="100%"
+        id = 'questionare'
+        name = 'myframe'
+></iframe>
+
+<!--onload="this.height=myframe.document.body.scrollHeight"-->
+
+<script>
+
+  // 记录该页面开始的时间
+  let timestamp = (new Date()).valueOf();
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+  let ext = getUrlParameter('ext')
+  let a = "https://www.credamo.com/s/73ieMnano/?" + ext
+  document.getElementById('questionare').setAttribute("src",a);
+  console.log(ext)
+
+
+  // 定义该页面结束后的下一个页面（回到目标页或者进入人格问卷页）
+  link1 = "./guide-1.html?c=" + getUrlParameter('c') + '&ext=' + getUrlParameter('ext')
+          + '&tchain=' + getUrlParameter('tchain') + '_' + timestamp
+
+  if (getUrlParameter('dev') === '1') {
+    link1 = link1 + '&dev=1'
+  }
+
+  // 点击按钮时确认该往哪跳
+  function clickButton() {
+      window.location.href=link1
+  }
+
+</script>
+
+
+</body>
+</html>

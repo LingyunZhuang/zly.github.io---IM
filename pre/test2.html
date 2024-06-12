@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>五秒跳页五秒关闭</title>
+  <script type="text/javascript">
+    function countDown(secs,surl)
+    {
+      var jumpTo=document.getElementById('jumpTo');
+      jumpTo.innerHTML=secs;
+      if(--secs>0)
+      {
+        setTimeout("countDown("+secs+",'"+surl+"')",1000);//注意打点
+      }
+      else{
+        location.href=surl;
+      }
+    }
+  </script>
+</head>
+
+<body>
+<span id="jumpTo">5</span>秒后自动跳转到http://www.cnblogs.com/wqydf/
+<script type="text/javascript">countDown(5,'http://www.cnblogs.com/wqydf/');</script>
+</body>
+</html>

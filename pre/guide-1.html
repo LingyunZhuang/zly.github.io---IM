@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="清华LOGO.png" type="image/x-icon">
+
+  <script>;(function(){var w=parseInt(window.screen.width),s=w/640,u=navigator.userAgent.toLowerCase(),m='<meta name="viewport" content="width=640,';if(/android (\d+\.\d+)/.test(u)){if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';}else{m+='user-scalable=no,';}m+='target-densitydpi=device-dpi">';document.write(m);}());</script>
+  <link rel="stylesheet" href="guide.css">
+
+  <title>游戏指导语</title>
+</head>
+<body>
+
+<div id="main" class="container">
+
+  <div id="header">
+    <img src="tsinghua_banner_2.png" width="100%">
+    <h2>游戏指导语</h2>
+  </div>
+  <div class="boxes">
+    <div class="leftbox">
+      <img src="tetris_screenshot.png" width="95%">
+    </div>
+    <div class="rightbox">
+      <article id="basic_intro">
+        <h3>1. 游戏基本机制介绍</h3>
+        <p>游戏界面如左图所示，按空格键开始游戏后界面上方会陆续掉落不同形状的方块，你可以在界面右方提前预览下一个掉落的方块形状；</p>
+        <p>你可以通过键盘的<u>左</u>、<u>右</u>方向键（←，→）控制方块的位置，通过<u>上</u>方向键（↑）使方块逆时针旋转，通过<u>下</u>方向键（↓）使方块下降速度加快，<b>按<u>空格键</u>则会使方块直接掉落到底部</b>；</p>
+        <p>方块移到区域最下方或是着地到其他方块上无法移动时，就会固定在该处，而新的方块出现在区域上方开始落下；</p>
+        <p>当下方区域中某一排横向格子全部由方块填满，则该排会消失并且获得积分,每消除<b style="color: #F75000">1行</b>获得<b style="color: #F75000">10分</b>；</p>
+        <p>当固定的方块堆到区域最上方而无法消除层数时，则该局结束，按空格键可重新开始，<span style="color: #F75000">死亡后分数不会清零，而是会扣除20%</span>。</p>
+      </article>
+    </div>
+  </div>
+
+  <div class="boxes" id="leaderboard_hint">
+
+    <div class="leftbox">
+      <img src="leaderboard.png" width="90%">
+    </div>
+
+    <div class="rightbox">
+      <article>
+        <h3>2. 排行榜说明</h3>
+        <p>在游戏过程中，游戏左侧界面会显示你们二人的分数排行榜</p>
+        <p style="color: #F75000">该排行榜并非是实时变化，而是每分钟更新一次</p>
+        <p>你可以根据排行榜来确认当前分数差距。</p>
+        <p style="color: #F75000">注意：练习时排行榜仅为演示功能，对手是案例数据，正式阶段才是另一人的分数</p>
+      </article>
+    </div>
+
+  </div>
+
+
+  <div id="notice">
+    <h3>实验说明</h3>
+    <article>
+      <p>接下来是3分钟的练习环节，你需要熟悉游戏界面和掌握游戏操作，注意以下事项:</p>
+      <ul>
+      <li><b>请全程带好耳机</b></li>
+      <li>游戏死亡后请立即按空格键重新开始</li>
+      </ul>
+      <p>实验过程中出现故障请及时联系主试</p>
+    </article>
+
+<!--    <button onclick="javascript:window.location.href='../dist/index.html?type=practice'">已了解，开始练习</button>-->
+    <button onclick="clickButton()" id="btn" disabled="disabled">开始练习 (10s)</button>
+  </div>
+</div>
+
+<script>
+
+  // 记录该页面开始的时间
+  let timestamp = (new Date()).valueOf();
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+  function clickButton() {
+    var condition = getUrlParameter('c')
+    let ext = getUrlParameter('ext')
+    // var link = '../dist/index.html?type=practice&' + 'condition=' + condition;
+    var link = '../practice/dist/index.html?' + 'c=' + condition + '&pra=1' + '&ext=' + ext
+                + '&tchain=' + getUrlParameter('tchain') + '_' + timestamp
+    if (getUrlParameter('dev') === '1') {
+      link = link + '&dev=1'
+    }
+
+    window.location.href=link
+  }
+
+  //实现按钮倒计时功能
+  let tim=9;
+  function aaa(){
+    let btn=document.getElementById("btn");
+    if(tim<=0)
+    {
+      btn.textContent="已了解，开始练习";
+      btn.disabled="";
+    }
+    else
+    {
+      btn.textContent="开始练习 ("  +tim+"s)";
+      tim--;
+    }
+  }
+  setInterval("aaa()",1000);
+
+  // 根据被试所属条件来显示或隐藏
+  if (getUrlParameter("c") === "c") {
+    document.getElementById("leaderboard_hint").style.display = "none"
+  }
+
+
+</script>
+
+
+
+</body>
+</html>
+

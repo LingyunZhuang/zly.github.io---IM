@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="清华LOGO.png" type="image/x-icon">
+
+  <script>;(function(){var w=parseInt(window.screen.width),s=w/640,u=navigator.userAgent.toLowerCase(),m='<meta name="viewport" content="width=640,';if(/android (\d+\.\d+)/.test(u)){if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';}else{m+='user-scalable=no,';}m+='target-densitydpi=device-dpi">';document.write(m);}());</script>
+  <link rel="stylesheet" href="guide.css">
+
+  <title>游戏指导语</title>
+</head>
+<body>
+
+<div id="main" class="container">
+
+  <div id="header">
+    <img src="tsinghua_banner_2.png" width="100%">
+    <h2>练习结束</h2>
+
+
+    <article>
+
+      <p>你现在可休息10秒，然后将进入正式实验游戏阶段</p>
+
+
+      <br>
+      <p class="hint_word">准备好之后点击按钮进入正式实验</p>
+      <button onclick="clickButton()" id="btn" disabled="disabled">准备好了 (10s)</button>
+    </article>
+  </div>
+
+</div>
+
+<script>
+
+  // 记录该页面开始的时间
+  let timestamp = (new Date()).valueOf();
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+  // 获取练习页面传递过来的参数：速度和分数
+
+  function clickButton() {
+    var condition = getUrlParameter('c')
+    var ext = getUrlParameter('ext')
+    var link = 'guide-2.5.html?' + 'c=' + condition + '&ext=' + ext
+               + '&tchain=' + getUrlParameter('tchain') + '_' + timestamp
+    if (getUrlParameter('dev') === '1') {
+      link = link + '&dev=1'
+    }
+
+    window.location.href=link
+  }
+
+  // 修改目标内容, b和d条件是非具体目标
+  // if (['b','d'].indexOf(getUrlParameter('c'))> -1){
+  //   document.getElementById("goal").innerHTML="请尽量在本次实验的10分钟内发挥你的最佳水平";
+  // }
+
+  //实现按钮倒计时功能
+  let tim=9;
+  if (getUrlParameter('dev') === '1') {
+    tim = 3
+  }
+
+  function aaa(){
+    let btn=document.getElementById("btn");
+    if(tim<=0)
+    {
+      btn.textContent="准备好了";
+      btn.disabled="";
+    }
+    else
+    {
+      btn.textContent="准备好了 ("  +tim+"s)";
+      tim--;
+    }
+  }
+  setInterval("aaa()",1000);
+
+
+
+</script>
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="清华LOGO.png" type="image/x-icon">
+
+  <script>;(function(){var w=parseInt(window.screen.width),s=w/640,u=navigator.userAgent.toLowerCase(),m='<meta name="viewport" content="width=640,';if(/android (\d+\.\d+)/.test(u)){if(parseFloat(RegExp.$1)>2.3)m+='minimum-scale='+s+',maximum-scale='+s+',';}else{m+='user-scalable=no,';}m+='target-densitydpi=device-dpi">';document.write(m);}());</script>
+  <link rel="stylesheet" href="guide.css">
+
+  <title>休息环节</title>
+</head>
+<body>
+
+<div id="main" class="container">
+
+  <div id="header">
+    <img src="tsinghua_banner_2.png" width="100%">
+    <h2>休息环节</h2>
+
+
+    <article>
+
+      <p>现在你可以静心休息2分钟，然后将进入下一环节</p>
+
+      <br>
+      <p class="hint_word">休息过程中请勿玩手机或进行其他动作，准备好之后点击按钮进入下一环节</p>
+      <button onclick="clickButton()" id="btn" disabled="disabled">准备好了 (120s)</button>
+    </article>
+  </div>
+
+</div>
+
+<script>
+
+  // 记录该页面开始的时间
+  let timestamp = (new Date()).valueOf();
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+  // 获取练习页面传递过来的参数：速度和分数
+  link = 'guide-2.5.html' + '?c=' + getUrlParameter('c') + '&f=' + getUrlParameter('f')
+         + '&ext=' + getUrlParameter('ext')
+         + '&tchain=' + getUrlParameter('tchain') + '_' + timestamp
+  console.log(link)
+
+
+  if (getUrlParameter('dev') === '1') {
+    link = link + '&dev=1'
+  }
+  function clickButton() {
+    window.location.href=link
+  }
+
+
+  //实现按钮倒计时功能
+  let tim=119;
+  if (getUrlParameter('dev') === '1') {
+    tim = 3
+  }
+
+  function aaa(){
+    let btn=document.getElementById("btn");
+    if(tim<=0)
+    {
+      btn.textContent="准备好了";
+      btn.disabled="";
+    }
+    else
+    {
+      btn.textContent="准备好了 ("  +tim+"s)";
+      tim--;
+    }
+  }
+  setInterval("aaa()",1000);
+
+
+
+</script>
+
+
+
+</body>
+</html>
+

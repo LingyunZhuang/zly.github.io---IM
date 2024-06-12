@@ -1,0 +1,25 @@
+.background(@from, @to) {
+  background: (@from + @to)/2;
+  background: -webkit-gradient(linear, left top, left bottom, from(@from), to(@to));
+  background: -moz-linear-gradient(top, @from, @from); // IE9使用filter背景渐变, 但因为使用了borader-radius, 所以不兼容, IE9使用中和的背景色即可
+  //filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='@{from}', endColorstr='@{to}');
+}
+
+.goal-hint {
+  position: absolute;
+  //right: 150%;
+  line-height: 2;
+  //white-space: nowrap;
+  //border: 5px solid red;
+  //left: auto;
+  //left: -95%;
+  left: 110%;
+  top: 8%;
+  right: auto;
+  width: 450px;
+  //height: 300px;
+  opacity: .9;
+  text-align: left;
+  color:white;
+}
+

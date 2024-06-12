@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>问卷</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    iframe {
+      width: 90%;
+      height: 100%;
+      border: 0px;
+      /*min-height: 1800px;*/
+      /*border: 0px;*/
+      /*overflow: hidden;*/
+    }
+    body {
+      text-align: center;
+      background-color: rgb(238, 238, 238);
+    }
+  </style>
+
+</head>
+<body>
+
+
+
+<!--<h2>我是问卷我是问卷</h2>-->
+
+<!--<script type="text/javascript" src="http://www.wenjuan.com/iframe/5f07159792beb52a04f9d281/?params=hide_mobile_icon=true"></script>-->
+<iframe src="https://www.diaochapai.com/survey/c5da5a1f-887e-4b8b-a8e7-35140fe34303?iframe"
+        width="90%"
+        height="100%"
+        id = 'questionare'
+        name = 'myframe'
+></iframe>
+
+<!--onload="this.height=myframe.document.body.scrollHeight"-->
+
+<script>
+
+  function getUrlParameter(name){
+    name = name.replace(/[]/,"\[").replace(/[]/,"\[").replace(/[]/,"\\\]");
+    var regexS = "[\\?&]"+name+"=([^&#]*)";
+    var regex = new RegExp( regexS );
+    var results = regex.exec(window.parent.location.href );
+    if( results == null ) return ""; else {
+      return results[1];
+    }
+  };
+
+  let ext = getUrlParameter('ext')
+  let a = "https://www.diaochapai.com/survey/c5da5a1f-887e-4b8b-a8e7-35140fe34303?iframe&ext=" + ext + '_timechain_' + getUrlParameter("tchain")
+  document.getElementById('questionare').setAttribute("src",a);
+  console.log(ext)
+
+</script>
+
+</body>
+</html>
